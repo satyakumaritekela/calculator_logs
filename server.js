@@ -4,7 +4,7 @@ const socketIO = require("socket.io");
 const path = require("path");
 
 // localhost port
-export const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3001;
 
 const app = express();
 

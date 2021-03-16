@@ -1,5 +1,7 @@
 import io from "socket.io-client";
-import port from "../../server";
+
+// localhost port
+const port = process.env.PORT || 3001;
 
 const socketUrl =  `http://localhost:${port}`;
 
