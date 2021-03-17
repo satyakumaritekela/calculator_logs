@@ -14,9 +14,12 @@ const server = http.createServer(app);
 // creates socket using the instance of the server
 const io = socketIO(server);
 
+// on connection with the socket
 io.on("connection", socket => {
+  // emitting the event to store the socketId
   io.emit("getSocketId", socket.id);
 
+  // on emit of the equals event receiving from the client
   socket.on("equals", log => {
     io.emit("emitted-equals", log);
   });

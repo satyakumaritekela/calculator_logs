@@ -1,4 +1,4 @@
-.Card {
+.Log {
     background-color:seagreen;
     color: white;
     font-weight: 300;
@@ -7,6 +7,6 @@
     border-radius: 10px;
 }
 
-.Card .p {
+.Log .p {
     font-weight: 500;
 }

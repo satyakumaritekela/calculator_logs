@@ -3,7 +3,7 @@ import "./Log.css";
 
 const Log = ({ expression, userId }) => {
     return (<>
-        <div className="Card">
+        <div className="Log">
             <p>UserId: {userId}</p>
             <p>{expression}</p>
         </div>
