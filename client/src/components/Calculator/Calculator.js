@@ -66,7 +66,7 @@ const Calculator = ({ setLogs }) => {
     const [isCalculated, setIsCalculated] = useState(false);
     // to store the userId
     const [userId, setUserId] = useState("");
- 
+
     // on initial render of the component to store the userId
     useEffect(() => {
         socket.on("connect", () => {
@@ -107,15 +107,22 @@ const Calculator = ({ setLogs }) => {
                 value === "-" ||
                 value === "*" ||
                 value === "/":
-                if (!operatorFlag) {
-                    // if operator is not already clicked
-                    setCurrentNumber(currentNumber + value);
-                    setOperatorFlag(true);
-                    setDecimalFlag(false);
+                if (!isCalculated) {
+                    if (!operatorFlag) {
+                        // if operator is not already clicked
+                        setCurrentNumber(currentNumber + value);
+                        setOperatorFlag(true);
+                        setDecimalFlag(false);
+                    } else {
+                        // if operator is clicked already
+                        const newNumber = currentNumber.slice(0, currentNumber.length - 1);
+                        setCurrentNumber(newNumber + value);
+                    }
                 } else {
-                    // if operator is clicked already
-                    const newNumber = currentNumber.slice(0, currentNumber.length - 1);
-                    setCurrentNumber(newNumber + value);
+                    setIsCalculated(false);
+                    if (value === "+" || value === "-") {
+                        setCurrentNumber(value);
+                    }
                 }
                 break;
 
@@ -167,7 +174,7 @@ const Calculator = ({ setLogs }) => {
     return (
         <>
             <div>
-                <h3>UserId: { userId }</h3>
+                <h3>UserId: {userId}</h3>
             </div>
             <div className="calculator">
                 <div className="display">
